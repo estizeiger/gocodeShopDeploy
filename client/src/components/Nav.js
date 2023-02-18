@@ -5,7 +5,7 @@ import RangeSlider from "./RangeSlider";
 const Nav = () => {
   return (
     <nav className="product-filter">
-      <h1>Products</h1>
+      <h1>My Products</h1>
 
       <div className="sort">
         <div className="collection-sort">
