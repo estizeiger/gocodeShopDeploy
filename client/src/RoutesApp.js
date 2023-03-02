@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
+import AdminDialog from "./components/AdminDialog";
 import CartDetails from "./components/CartDetails";
 import NotFoundPage from "./components/NotFoundPage";
 import ProductDetails from "./components/ProductDetails";
+import ProductsAdmin from "./components/ProductsAdmin";
+import ProductUpdate from "./components/ProductUpdate";
 import MyContext from "./MyContext";
 
 const RoutesApp = () => {
@@ -118,8 +121,14 @@ const RoutesApp = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
+          <Route path="admin/login" element={<AdminDialog />} />
           <Route path="products/:id" element={<ProductDetails />} />
           <Route path="cartDetails" element={<CartDetails />} />
+          <Route path="admin/products" element={<ProductsAdmin />} />
+          <Route
+            path="admin/products/updateProduct/:id"
+            element={<ProductUpdate />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

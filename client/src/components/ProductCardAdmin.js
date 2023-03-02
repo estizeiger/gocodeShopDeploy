@@ -1,14 +1,9 @@
-import { useContext } from "react";
-import MyContext from "../MyContext";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
-import { useNavigate } from "react-router-dom";
 
-const ProductCard = ({ id, title, img_src, price, rating }) => {
+const ProductCardAdmin = ({ id, title, img_src, price, rating }) => {
   const arr = new Array(Math.floor(parseInt(rating["rate"]))).fill("*");
-  const { handleRemoveFromCart, handleAddToCart } = useContext(MyContext);
   const navigate = useNavigate();
 
   return (
@@ -38,16 +33,18 @@ const ProductCard = ({ id, title, img_src, price, rating }) => {
         </div>
         <br />
         <ButtonGroup variant="outlined" aria-label="outlined button group">
-          <Button>
-            <AddRoundedIcon onClick={() => handleAddToCart(id)} />
+          <Button
+            onClick={() => {
+              navigate(`updateProduct/${id}`);
+            }}
+          >
+            update
           </Button>
-          <Button>
-            <RemoveRoundedIcon onClick={() => handleRemoveFromCart(id)} />
-          </Button>
+          <Button>delete</Button>
         </ButtonGroup>
       </div>
     </div>
   );
 };
 
-export default ProductCard;
+export default ProductCardAdmin;

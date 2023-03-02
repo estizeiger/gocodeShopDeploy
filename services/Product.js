@@ -1,7 +1,13 @@
-import { Product } from "../models/Product";
+import { Product } from "../models/Product.js";
 
 export const addProductService = (product) => {
-  return (createdProduct = new Product({ product }));
+  const createdProduct = new Product({
+    price: product.price,
+    title: product.title,
+    img: product.img,
+    category: product.category,
+  });
+  return createdProduct;
 };
 
 export const updateProductService = (id, newProduct) => {

@@ -4,7 +4,7 @@ import {
   getAllProductsService,
   getOneProductService,
   updateProductService,
-} from "../services/Product";
+} from "../services/Product.js";
 
 export const addProductController = async (req, res) => {
   try {
@@ -34,8 +34,9 @@ export const getOneProductController = async (req, res) => {
     const product = await getOneProductService(productId);
     if (!product) {
       res.status(404).send({ message: "no such product with the specific id" });
+    } else {
+      res.send(product);
     }
-    res.send(product);
   } catch (e) {
     console.log(e);
     res.send(e.message);
@@ -45,13 +46,15 @@ export const getOneProductController = async (req, res) => {
 export const updateProductController = async (req, res) => {
   try {
     const { productId } = req.params;
-    const updatedProduct = await updateProductService(productId);
+    const newProduct = { ...req.body };
+    const updatedProduct = await updateProductService(productId, newProduct);
 
     if (!updatedProduct) {
       res.status(404).send({ message: "no such Product with the specific id" });
+    } else {
+      await updatedProduct.save();
+      res.send(updatedProduct);
     }
-    await updatedProduct.save();
-    res.send(updatedProduct);
   } catch (e) {
     console.log(e);
     res.send(e.message);
@@ -64,8 +67,9 @@ export const deleteProductController = async (req, res) => {
     const deletedTodo = await deleteProductService(productId);
     if (!deletedTodo) {
       res.status(404).send({ message: "no such product with the specific id" });
+    } else {
+      res.send(deletedTodo);
     }
-    res.send(deletedTodo);
   } catch (e) {
     console.log(e);
     res.send(e.message);
