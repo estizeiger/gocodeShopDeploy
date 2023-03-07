@@ -12,7 +12,6 @@
 /* new addition to original app.css: */
 
 html,
-body,
 div,
 span,
 applet,
@@ -82,7 +81,9 @@ footer,
 header,
 hgroup,
 menu,
-nav,
+nav {
+justify-content: space-between
+}
 section,
 summary,
 time,
@@ -103,8 +104,17 @@ aside,
 details,
 figcaption,
 figure,
-footer,
-header,
+footer{
+  display: flex;
+  align-items: center;
+  padding: 30px 0;
+}
+header {
+  /* flex-direction: column; */
+  justify-content: space-between;
+  padding: 30px 0;
+  /* background-color: aliceblue; */
+}
 hgroup,
 menu,
 nav,
@@ -158,13 +168,13 @@ body {
 }
 
 h1 {
-  font-size: 28px;
+  font-size: 40px;
   font-weight: 300;
   flex: 1;
 }
 
 h2{
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 300;
   flex: 1;
 }
@@ -200,4 +210,8 @@ button {
   font-size: 20px;
   font-weight: 300;
   /* flex: 1; */
+}
+
+.cart-drawer{
+  background-color: #f6f6f6;
 }

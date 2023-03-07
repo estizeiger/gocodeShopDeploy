@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  postProduct,
+  putProduct,
+  deleteProduct,
+  getAllProducts,
+} from "./apiRequests";
 import App from "./App";
 import AdminDialog from "./components/AdminDialog";
 import CartDetails from "./components/CartDetails";
 import NotFoundPage from "./components/NotFoundPage";
 import ProductDetails from "./components/ProductDetails";
 import ProductsAdmin from "./components/ProductsAdmin";
-import ProductUpdate from "./components/ProductUpdate";
 import MyContext from "./MyContext";
 
 const RoutesApp = () => {
@@ -17,22 +22,43 @@ const RoutesApp = () => {
   const [valueRange, setValueRange] = useState([1, 1000]);
   const [cartProducts, setCartProducts] = useState([]);
 
-  async function fetchData() {
+  const fetchDataOld = async () => {
     const response = await fetch("https://fakestoreapi.com/products");
     const json = await response.json();
+    const { title, category, price, image } = json[8];
+    console.log("json[0]", JSON.stringify({ title, category, price, image }));
+    postProduct({
+      title: title,
+      category: category,
+      price: price,
+      img: image,
+    }).then((response) => {
+      console.log(response); // JSON data parsed by `data.json()` call
+    });
     setProductsList(json);
     setCurrProductList(json);
-    // setCartProducts(json);
-    //we want it to happen only once and be nagish outside->
-    //we can do it here, its called in useEffect in begining of component's life:
     setCategories(
       json
         .map((p) => p.category)
         .filter((value, index, array) => array.indexOf(value) === index)
     );
-  }
+  };
+
+  const fetchDataNew = async () => {
+    const json = await getAllProducts();
+    setProductsList(json);
+    setCurrProductList(json);
+    setCategories(
+      json
+        .map((p) => p.category)
+        .filter((value, index, array) => array.indexOf(value) === index)
+    );
+    console.log("done getting all");
+  };
+
   useEffect(() => {
-    fetchData();
+    // fetchDataOld();
+    fetchDataNew();
   }, []);
 
   useEffect(() => {
@@ -77,12 +103,12 @@ const RoutesApp = () => {
       copy[ind].amount += 1;
       setCartProducts([copy[ind], ...copy.filter((item) => item.id !== id)]);
     } else {
-      const newItem = productsList.find((item) => item.id === id);
+      const newItem = productsList.find((item) => item._id === id);
       setCartProducts(
         copy.concat({
           id: id,
           title: newItem.title,
-          image: newItem.image,
+          image: newItem.img,
           price: newItem.price,
           amount: 1,
         })
@@ -108,6 +134,7 @@ const RoutesApp = () => {
     <MyContext.Provider
       value={{
         currProductList,
+        setCurrProductList,
         categories,
         category,
         setCategory,
@@ -116,6 +143,11 @@ const RoutesApp = () => {
         handleAddToCart,
         handleRemoveFromCart,
         cartProducts,
+        // getAllProducts,
+        fetchDataNew,
+        postProduct,
+        putProduct,
+        deleteProduct,
       }}
     >
       <BrowserRouter>
@@ -125,10 +157,6 @@ const RoutesApp = () => {
           <Route path="products/:id" element={<ProductDetails />} />
           <Route path="cartDetails" element={<CartDetails />} />
           <Route path="admin/products" element={<ProductsAdmin />} />
-          <Route
-            path="admin/products/updateProduct/:id"
-            element={<ProductUpdate />}
-          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

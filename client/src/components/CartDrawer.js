@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import MyContext from "../MyContext";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
+import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
@@ -9,7 +10,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router-dom";
 
-export default function CartDrawer() {
+const CartDrawer = () => {
   const { cartProducts } = useContext(MyContext);
   const navigate = useNavigate();
   const [state, setState] = useState(false);
@@ -54,17 +55,21 @@ export default function CartDrawer() {
   return (
     <div>
       <ShoppingCartIcon onClick={toggleDrawer(true)} color="primary" />
-      <Drawer anchor={"right"} open={state} onClose={toggleDrawer(false)}>
-        <h1>Your Cart</h1>
-        <button
-          onClick={() => {
-            navigate("cartDetails");
-          }}
-        >
-          <h2>Show Full Cart</h2>
-        </button>
-        {list()}
-      </Drawer>
+      <div className="cart-drawer">
+        <Drawer anchor={"right"} open={state} onClose={toggleDrawer(false)}>
+          <h2>Your Cart</h2>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              navigate("cartDetails");
+            }}
+          >
+            Show Full Cart
+          </Button>
+          {list()}
+        </Drawer>
+      </div>
     </div>
   );
-}
+};
+export default CartDrawer;

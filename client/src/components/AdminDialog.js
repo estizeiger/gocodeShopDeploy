@@ -27,11 +27,11 @@ export default function AdminDialog() {
         Open form dialog
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>Manager Login</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
+            To login to this website as a manager, please enter your email
+            address here.
           </DialogContentText>
           <TextField
             autoFocus

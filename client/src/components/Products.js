@@ -10,12 +10,12 @@ const Products = () => {
       {currProductList.map((item) => {
         return (
           <ProductCard
-            id={item.id}
-            key={item.id}
+            id={item._id}
+            key={item._id}
             title={item.title}
             price={item.price}
             rating={item.rating}
-            img_src={item.image}
+            img_src={item.img}
           />
         );
       })}

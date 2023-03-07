@@ -5,15 +5,15 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
 import { useNavigate } from "react-router-dom";
+import "./ProductCard.css";
 
 const ProductCard = ({ id, title, img_src, price, rating }) => {
-  const arr = new Array(Math.floor(parseInt(rating["rate"]))).fill("*");
+  // const arr = new Array(Math.floor(parseInt(rating["rate"]))).fill("*");
   const { handleRemoveFromCart, handleAddToCart } = useContext(MyContext);
   const navigate = useNavigate();
 
   return (
     <div className="product-card">
-      {/*<h4>{key}</h4> impossible, cannot access "key", its not a prop.  */}
       <div className="product-image">
         <img
           onClick={() => {
@@ -28,13 +28,13 @@ const ProductCard = ({ id, title, img_src, price, rating }) => {
         <h6>{price}$</h6>
         <div>
           {" "}
-          {arr.map((item, i) => {
+          {/* {arr.map((item, i) => {
             return (
               <h4 className="fas fa-star" key={i}>
                 {" "}
               </h4>
             );
-          })}
+          })} */}
         </div>
         <br />
         <ButtonGroup variant="outlined" aria-label="outlined button group">

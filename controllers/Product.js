@@ -19,6 +19,9 @@ export const addProductController = async (req, res) => {
 };
 
 export const getAllProductsController = async (req, res) => {
+  console.log("get all request");
+  // console.log("req body: ", req.body);
+  // console.log("req body: ", req.raw);
   try {
     const products = await getAllProductsService();
     res.send(products);

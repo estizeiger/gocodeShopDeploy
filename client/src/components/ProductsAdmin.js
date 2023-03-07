@@ -1,36 +1,148 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import MyContext from "../MyContext";
 import ProductCardAdmin from "./ProductCardAdmin";
 import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
 import "./Products.css";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 const ProductsAdmin = () => {
-  const { currProductList } = useContext(MyContext);
+  const { currProductList, postProduct, fetchDataNew } = useContext(MyContext);
+
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = async () => {
+    setOpen(false);
+    await fetchDataNew();
+  };
+
+  useEffect(() => {
+    console.log("currProductList ", currProductList);
+  }, [currProductList]);
+
+  const [newTitle, setNewTitle] = useState("the amazing title");
+  const [newCategory, setNewCategory] = useState("men's clothing");
+  const [newPrice, setNewPrice] = useState(0);
+  const [newImg, setNewImg] = useState(
+    "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+  );
+
+  const handleAdd = async () => {
+    await postProduct({
+      title: newTitle,
+      category: newCategory,
+      price: newPrice,
+      img: newImg,
+    });
+    await handleClose();
+  };
+
+  useEffect(() => {
+    console.log("currProductList ", currProductList);
+  }, [currProductList]);
+
   return (
     <div>
       <div>
-        <h1>Products- Admin</h1>
-        <h2>add, update and delete your products</h2>
-        <ButtonGroup variant="outlined" aria-label="outlined button group">
-          <Button onClick={() => {}}>add new product</Button>
-        </ButtonGroup>
+        <header>
+          <span>
+            <h1>Products- Admin</h1>
+            <h2>add, update and delete your products</h2>
+          </span>
+          <Button variant="outlined" onClick={handleClickOpen}>
+            add new product
+          </Button>
+        </header>
       </div>
       {/* <section className="products"> */}
       <section className="products">
         {currProductList.map((item) => {
           return (
             <ProductCardAdmin
-              id={item.id}
-              key={item.id}
+              id={item._id}
+              key={item._id}
               title={item.title}
               price={item.price}
               rating={item.rating}
-              img_src={item.image}
+              img_src={item.img}
+              category={item.category}
             />
           );
         })}
       </section>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Add Product</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            please enter the wanted fields of the new product.
+          </DialogContentText>
+          <TextField
+            onChange={(e) => {
+              setNewTitle(e.target.value);
+            }}
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Title"
+            type="text"
+            defaultValue={"the amazing title"}
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            onChange={(e) => {
+              setNewCategory(e.target.value);
+            }}
+            autoFocus
+            margin="dense"
+            id="name"
+            label="category"
+            type="text"
+            defaultValue={"men's clothing"}
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            onChange={(e) => {
+              setNewImg(e.target.value);
+            }}
+            autoFocus
+            margin="dense"
+            id="name"
+            label="image url"
+            type="text"
+            defaultValue={
+              "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+            }
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            onChange={(e) => {
+              setNewPrice(e.target.valueAsNumber);
+            }}
+            autoFocus
+            margin="dense"
+            id="name"
+            label="price"
+            type="number"
+            defaultValue={0}
+            fullWidth
+            variant="standard"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleAdd}>add</Button>
+          <Button onClick={handleClose}>cancel</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };
