@@ -6,10 +6,10 @@ function App() {
   return (
     <div className="App">
       <header>
-        <div className="main-title">
+        <div>
           <span>
-            <h1>EasyShopping</h1>
-            <h2>shop your favorite products online, easily and efficiently!</h2>
+            <h1 className="main-title">EasyShopping</h1>
+            <h2>Shopping made easy:)</h2>
           </span>
         </div>
       </header>

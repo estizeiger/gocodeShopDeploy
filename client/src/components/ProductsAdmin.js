@@ -72,7 +72,7 @@ const ProductsAdmin = () => {
           </Button>
         </header>
       </div>
-      {/* <section className="products"> */}
+      <br />
       <section className="products">
         {currProductList.map((item) => {
           return (

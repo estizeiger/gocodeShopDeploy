@@ -1,7 +1,9 @@
 const NotFoundPage = () => {
   return (
     <div>
-      <h1>wanted page (route) is unfound</h1>
+      <header>
+        <h1>wanted page (route) is unfound</h1>
+      </header>
     </div>
   );
 };

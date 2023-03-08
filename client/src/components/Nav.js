@@ -36,7 +36,7 @@ const Nav = () => {
             cart
           </Button>
           <Button onClick={handleClickOpen}>
-            <RiAdminLine size={30} />
+            <RiAdminLine color="#C6DCEF" size={30} />
             admin
           </Button>
         </ButtonGroup>
