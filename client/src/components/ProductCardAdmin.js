@@ -70,8 +70,8 @@ const ProductCardAdmin = ({ id, title, img_src, price, rating, category }) => {
         />
       </div>
       <div className="product-info">
-        <h5>{title}</h5>
-        <h6>{price}$</h6>
+        <h4>{title}</h4>
+        <h5>{price}$</h5>
         <br />
         <ButtonGroup variant="outlined" aria-label="outlined button group">
           <Button onClick={handleClickOpen}>update</Button>

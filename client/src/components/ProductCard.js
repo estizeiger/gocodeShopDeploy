@@ -24,8 +24,8 @@ const ProductCard = ({ id, title, img_src, price, rating }) => {
         />
       </div>
       <div className="product-info">
-        <h5>{title}</h5>
-        <h6>{price}$</h6>
+        <h4>{title}</h4>
+        <h5>{price}$</h5>
         <div>
           {" "}
           {/* {arr.map((item, i) => {

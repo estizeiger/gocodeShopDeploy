@@ -1,9 +1,8 @@
 import { useContext } from "react";
 import Button from "@mui/material/Button";
 import MyContext from "../MyContext";
+import "./CartDetails.css";
 import CartItem from "./CartItem";
-// import "./Products.css";
-import "./ProductsInLine.css";
 
 const CartDetails = () => {
   const { cartProducts } = useContext(MyContext);
@@ -14,9 +13,9 @@ const CartDetails = () => {
           <h1>Your Cart</h1>
           <h2>check your cart details, including the amount of each item.</h2>
         </span>
+        <Button variant="outlined">go to payment</Button>
       </header>
-      <Button variant="outlined">go to payment</Button>
-      <section className="products-in-line">
+      <section className="cart-details">
         {cartProducts.map((item) => {
           return (
             <CartItem

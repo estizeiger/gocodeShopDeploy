@@ -1,0 +1,9 @@
+.cart-details{
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: 30;
+    border-width: 10px;
+    border-color: black;
+    width: 1000;
+    overflow: scroll;
+}

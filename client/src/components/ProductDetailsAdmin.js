@@ -21,7 +21,9 @@ const ProductDetailsAdmin = () => {
 
   return (
     <div>
-      <h1>Admin- Product details</h1>
+      <header>
+        <h1>Admin- Product details</h1>
+      </header>
       <div className="product-details">
         <div className="product-details-image">
           <img alt="no img found" src={chosenProduct.img} />
