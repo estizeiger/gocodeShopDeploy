@@ -14,8 +14,8 @@ const CartDetails = () => {
           <h1>Your Cart</h1>
           <h2>check your cart details, including the amount of each item.</h2>
         </span>
-        <Button variant="outlined">go to payment</Button>
       </header>
+      <Button variant="outlined">go to payment</Button>
       <section className="products-in-line">
         {cartProducts.map((item) => {
           return (

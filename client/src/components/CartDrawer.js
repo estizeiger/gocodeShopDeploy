@@ -57,7 +57,8 @@ const CartDrawer = () => {
       <ShoppingCartIcon onClick={toggleDrawer(true)} color="primary" />
       <div className="cart-drawer">
         <Drawer anchor={"right"} open={state} onClose={toggleDrawer(false)}>
-          <h2>Your Cart</h2>
+          <h1>........Shopping Cart.........</h1>
+          <Divider />
           <Button
             variant="outlined"
             onClick={() => {

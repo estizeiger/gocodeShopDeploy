@@ -3,6 +3,10 @@ import MyContext from "../MyContext";
 import ProductCardAdmin from "./ProductCardAdmin";
 import Button from "@mui/material/Button";
 import "./Products.css";
+import { BsFilterCircle } from "react-icons/bs";
+import { BsInfoCircle } from "react-icons/bs";
+import { RxImage } from "react-icons/rx";
+import { AiOutlineDollarCircle } from "react-icons/ai";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -90,6 +94,7 @@ const ProductsAdmin = () => {
           <DialogContentText>
             please enter the wanted fields of the new product.
           </DialogContentText>
+          <BsFilterCircle color="#71bbff" />
           <TextField
             onChange={(e) => {
               setNewTitle(e.target.value);
@@ -104,6 +109,7 @@ const ProductsAdmin = () => {
             variant="standard"
           />
           <br />
+          <BsInfoCircle color="#71bbff" />
           <div>
             <TextField
               id="outlined-select-currency"
@@ -124,6 +130,7 @@ const ProductsAdmin = () => {
               })}
             </TextField>
           </div>
+          <RxImage color="#71bbff" />
           <TextField
             onChange={(e) => {
               setNewImg(e.target.value);
@@ -137,8 +144,11 @@ const ProductsAdmin = () => {
               "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
             }
             fullWidth
+            maxRows={4}
+            multiline
             variant="standard"
           />
+          <AiOutlineDollarCircle color="#71bbff" />
           <TextField
             onChange={(e) => {
               setNewPrice(e.target.valueAsNumber);

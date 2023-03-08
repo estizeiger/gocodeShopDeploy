@@ -4,7 +4,7 @@ import RangeSlider from "./RangeSlider";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import { RiAdminLine } from "react-icons/ri";
-import { CgDetailsMore } from "react-icons/cg";
+// import { CgDetailsMore } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -38,10 +38,6 @@ const Nav = () => {
           <Button onClick={handleClickOpen}>
             <RiAdminLine size={30} />
             admin
-          </Button>
-          <Button>
-            <CgDetailsMore size={30} />
-            about
           </Button>
         </ButtonGroup>
         <Dialog open={open} onClose={handleClose}>

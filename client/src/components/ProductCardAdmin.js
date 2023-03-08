@@ -1,5 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BsFilterCircle } from "react-icons/bs";
+import { BsInfoCircle } from "react-icons/bs";
+import { RxImage } from "react-icons/rx";
+import { AiOutlineDollarCircle } from "react-icons/ai";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import TextField from "@mui/material/TextField";
@@ -79,6 +83,7 @@ const ProductCardAdmin = ({ id, title, img_src, price, rating, category }) => {
             <DialogContentText>
               please update the wanted fields of the selected product.
             </DialogContentText>
+            <BsFilterCircle color="#71bbff" />
             <TextField
               onChange={(e) => {
                 setNewTitle(e.target.value);
@@ -93,6 +98,7 @@ const ProductCardAdmin = ({ id, title, img_src, price, rating, category }) => {
               variant="standard"
             />
             <br />
+            <BsInfoCircle color="#71bbff" />
             <div>
               <TextField
                 id="outlined-select-currency"
@@ -113,6 +119,7 @@ const ProductCardAdmin = ({ id, title, img_src, price, rating, category }) => {
                 })}
               </TextField>
             </div>
+            <RxImage color="#71bbff" />
             <TextField
               onChange={(e) => {
                 setNewImg(e.target.value);
@@ -124,8 +131,11 @@ const ProductCardAdmin = ({ id, title, img_src, price, rating, category }) => {
               type="text"
               defaultValue={img_src}
               fullWidth
+              maxRows={4}
+              multiline
               variant="standard"
             />
+            <AiOutlineDollarCircle color="#71bbff" />
             <TextField
               onChange={(e) => {
                 setNewPrice(e.target.valueAsNumber);
