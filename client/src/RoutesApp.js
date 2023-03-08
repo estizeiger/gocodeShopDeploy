@@ -5,12 +5,14 @@ import {
   putProduct,
   deleteProduct,
   getAllProducts,
+  getSingleProduct,
 } from "./apiRequests";
 import App from "./App";
 import AdminDialog from "./components/AdminDialog";
 import CartDetails from "./components/CartDetails";
 import NotFoundPage from "./components/NotFoundPage";
 import ProductDetails from "./components/ProductDetails";
+import ProductDetailsAdmin from "./components/ProductDetailsAdmin";
 import ProductsAdmin from "./components/ProductsAdmin";
 import MyContext from "./MyContext";
 
@@ -144,6 +146,7 @@ const RoutesApp = () => {
         handleRemoveFromCart,
         cartProducts,
         // getAllProducts,
+        getSingleProduct,
         fetchDataNew,
         postProduct,
         putProduct,
@@ -157,6 +160,10 @@ const RoutesApp = () => {
           <Route path="products/:id" element={<ProductDetails />} />
           <Route path="cartDetails" element={<CartDetails />} />
           <Route path="admin/products" element={<ProductsAdmin />} />
+          <Route
+            path="admin/products/single/:id"
+            element={<ProductDetailsAdmin />}
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>

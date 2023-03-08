@@ -1,5 +1,9 @@
 const NotFoundPage = () => {
-  return <div>wanted page (route) is unfound</div>;
+  return (
+    <div>
+      <h1>wanted page (route) is unfound</h1>
+    </div>
+  );
 };
 
 export default NotFoundPage;

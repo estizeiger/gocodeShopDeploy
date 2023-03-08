@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import MyContext from "../MyContext";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
@@ -13,6 +13,10 @@ const RangeSlider = () => {
   const handleChange = (e, newValue) => {
     setValueRange(newValue);
   };
+
+  useEffect(() => {
+    setValueRange([1, 1000]);
+  }, []);
 
   return (
     <Box sx={{ width: 300 }}>

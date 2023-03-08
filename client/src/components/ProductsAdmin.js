@@ -9,9 +9,11 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import MenuItem from "@mui/material/MenuItem";
 
 const ProductsAdmin = () => {
-  const { currProductList, postProduct, fetchDataNew } = useContext(MyContext);
+  const { currProductList, postProduct, fetchDataNew, categories } =
+    useContext(MyContext);
 
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
@@ -22,6 +24,11 @@ const ProductsAdmin = () => {
     setOpen(false);
     await fetchDataNew();
   };
+
+  useEffect(() => {
+    // fetchDataOld();
+    fetchDataNew();
+  }, []);
 
   useEffect(() => {
     console.log("currProductList ", currProductList);
@@ -96,19 +103,27 @@ const ProductsAdmin = () => {
             fullWidth
             variant="standard"
           />
-          <TextField
-            onChange={(e) => {
-              setNewCategory(e.target.value);
-            }}
-            autoFocus
-            margin="dense"
-            id="name"
-            label="category"
-            type="text"
-            defaultValue={"men's clothing"}
-            fullWidth
-            variant="standard"
-          />
+          <br />
+          <div>
+            <TextField
+              id="outlined-select-currency"
+              select
+              label="category"
+              onChange={(e) => {
+                setNewCategory(e.target.value);
+              }}
+              defaultValue={"men's clothing"}
+              helperText="Please select your currency"
+            >
+              {categories.map((title, i) => {
+                return (
+                  <MenuItem key={i} value={title}>
+                    {title}
+                  </MenuItem>
+                );
+              })}
+            </TextField>
+          </div>
           <TextField
             onChange={(e) => {
               setNewImg(e.target.value);

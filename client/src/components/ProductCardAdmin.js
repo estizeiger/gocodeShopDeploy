@@ -8,13 +8,18 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import MenuItem from "@mui/material/MenuItem";
 import MyContext from "../MyContext";
 
 const ProductCardAdmin = ({ id, title, img_src, price, rating, category }) => {
-  // const arr = new Array(Math.floor(parseInt(rating["rate"]))).fill("*");
   const navigate = useNavigate();
-  const { putProduct, deleteProduct, currProductList, fetchDataNew } =
-    useContext(MyContext);
+  const {
+    putProduct,
+    deleteProduct,
+    currProductList,
+    fetchDataNew,
+    categories,
+  } = useContext(MyContext);
 
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
@@ -54,7 +59,7 @@ const ProductCardAdmin = ({ id, title, img_src, price, rating, category }) => {
       <div className="product-image">
         <img
           onClick={() => {
-            navigate(`products/${id}`);
+            navigate(`single/${id}`);
           }}
           alt="no img found"
           src={img_src}
@@ -63,16 +68,6 @@ const ProductCardAdmin = ({ id, title, img_src, price, rating, category }) => {
       <div className="product-info">
         <h5>{title}</h5>
         <h6>{price}$</h6>
-        <div>
-          {" "}
-          {/* {arr.map((item, i) => {
-            return (
-              <h4 className="fas fa-star" key={i}>
-                {" "}
-              </h4>
-            );
-          })} */}
-        </div>
         <br />
         <ButtonGroup variant="outlined" aria-label="outlined button group">
           <Button onClick={handleClickOpen}>update</Button>
@@ -97,19 +92,27 @@ const ProductCardAdmin = ({ id, title, img_src, price, rating, category }) => {
               fullWidth
               variant="standard"
             />
-            <TextField
-              onChange={(e) => {
-                setNewCategory(e.target.value);
-              }}
-              autoFocus
-              margin="dense"
-              id="name"
-              label="category"
-              type="text"
-              defaultValue={category}
-              fullWidth
-              variant="standard"
-            />
+            <br />
+            <div>
+              <TextField
+                id="outlined-select-currency"
+                select
+                label="category"
+                onChange={(e) => {
+                  setNewCategory(e.target.value);
+                }}
+                defaultValue={category}
+                helperText="Please select category"
+              >
+                {categories.map((title, i) => {
+                  return (
+                    <MenuItem key={i} value={title}>
+                      {title}
+                    </MenuItem>
+                  );
+                })}
+              </TextField>
+            </div>
             <TextField
               onChange={(e) => {
                 setNewImg(e.target.value);

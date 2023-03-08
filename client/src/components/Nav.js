@@ -17,6 +17,7 @@ import CartDrawer from "./CartDrawer";
 
 const Nav = () => {
   const navigate = useNavigate();
+  const [password, setPassword] = useState("");
 
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
@@ -47,23 +48,27 @@ const Nav = () => {
           <DialogTitle>Manager Login</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              To login to this website as a manager, please enter your email
-              address here.
+              To login to this website as a manager, please enter a manager's
+              password here
             </DialogContentText>
             <TextField
               autoFocus
               margin="dense"
               id="name"
-              label="Email Address"
-              type="email"
+              label="Password"
+              type="password"
               fullWidth
               variant="standard"
+              helperText="enter correct manager password"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
           </DialogContent>
           <DialogActions>
             <Button
               onClick={() => {
-                navigate(`admin/products`);
+                if (password == "admin!902Sk") navigate(`admin/products`);
               }}
             >
               log in

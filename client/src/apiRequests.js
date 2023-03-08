@@ -5,6 +5,14 @@ export const getAllProducts = async () => {
   return response.json();
 };
 
+export const getSingleProduct = async (productId) => {
+  const url = `http://localhost:8000/api/products/${productId}`;
+  const response = await fetch(url, { method: "GET", params: productId });
+  console.log("response: ", response);
+  // console.log("response.json: ", response.json());
+  return response.json();
+};
+
 export const postProduct = async (product) => {
   const url = "http://localhost:8000/api/addProduct";
   const response = await fetch(url, {

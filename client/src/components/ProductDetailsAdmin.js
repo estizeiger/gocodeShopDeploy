@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import MyContext from "../MyContext";
 import "./ProductDetails.css";
 
-const ProductDetails = () => {
+const ProductDetailsAdmin = () => {
   const { getSingleProduct } = useContext(MyContext);
 
   const [chosenProduct, setChosenProduct] = useState({});
@@ -21,7 +21,7 @@ const ProductDetails = () => {
 
   return (
     <div>
-      <h1>Product details</h1>
+      <h1>Admin- Product details</h1>
       <div className="product-details">
         <div className="product-details-image">
           <img alt="no img found" src={chosenProduct.img} />
@@ -36,4 +36,4 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
+export default ProductDetailsAdmin;

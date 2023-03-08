@@ -37,7 +37,7 @@ console.log("hi there!!");
 //routes to controllers
 app.post("/api/addProduct", addProductController);
 app.get("/api/products", getAllProductsController);
-app.get("/api/product/:productId", getOneProductController);
+app.get("/api/products/:productId", getOneProductController);
 app.put("/api/updateProduct/:productId", updateProductController);
 app.delete("/api/deleteProduct/:productId", deleteProductController);
 
