@@ -1,5 +1,5 @@
-const baseUrl = "http://localhost:8000";
-// const baseUrl = "https://gocode-shop-project.onrender.com";
+// const baseUrl = "http://localhost:8000";
+const baseUrl = "https://gocode-shop-project.onrender.com";
 
 export const getAllProducts = async () => {
   const url = baseUrl + "/api/products";
