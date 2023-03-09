@@ -6,8 +6,8 @@ import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CartItem from "./CartItem";
+import { BsHandbag } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 const CartDrawer = () => {
@@ -54,7 +54,7 @@ const CartDrawer = () => {
 
   return (
     <div>
-      <ShoppingCartIcon color={"#C6DCEF"} onClick={toggleDrawer(true)} />
+      <BsHandbag color="#C6DCEF" size={30} onClick={toggleDrawer(true)} />
       <div className="cart-drawer">
         <Drawer anchor={"right"} open={state} onClose={toggleDrawer(false)}>
           <h1>........Shopping Cart.........</h1>

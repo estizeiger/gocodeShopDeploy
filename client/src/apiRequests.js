@@ -1,12 +1,15 @@
+// const baseUrl = "http://localhost:8000";
+const baseUrl = "https://gocode-shop-project.onrender.com";
+
 export const getAllProducts = async () => {
-  const url = "http://localhost:8000/api/products";
+  const url = baseUrl + "/api/products";
   const response = await fetch(url);
   console.log("response: ", response);
   return response.json();
 };
 
 export const getSingleProduct = async (productId) => {
-  const url = `http://localhost:8000/api/products/${productId}`;
+  const url = baseUrl + `/api/products/${productId}`;
   const response = await fetch(url, { method: "GET", params: productId });
   console.log("response: ", response);
   // console.log("response.json: ", response.json());
@@ -14,7 +17,7 @@ export const getSingleProduct = async (productId) => {
 };
 
 export const postProduct = async (product) => {
-  const url = "http://localhost:8000/api/addProduct";
+  const url = baseUrl + "/api/addProduct";
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -27,7 +30,7 @@ export const postProduct = async (product) => {
 };
 
 export const putProduct = async (productId, newProduct) => {
-  const url = `http://localhost:8000/api/updateProduct/${productId}`;
+  const url = baseUrl + `/api/updateProduct/${productId}`;
   const response = await fetch(url, {
     method: "PUT",
     headers: {
@@ -41,7 +44,7 @@ export const putProduct = async (productId, newProduct) => {
 };
 
 export const deleteProduct = async (productId) => {
-  const url = `http://localhost:8000/api/deleteProduct/${productId}`;
+  const url = baseUrl + `/api/deleteProduct/${productId}`;
   const response = await fetch(url, {
     method: "DELETE",
     params: productId,
