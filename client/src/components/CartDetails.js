@@ -13,7 +13,16 @@ const CartDetails = () => {
           <h1>Your Cart</h1>
           <h2>check your cart details, including the amount of each item.</h2>
         </span>
-        <Button variant="outlined">go to payment</Button>
+        <span>
+          <Button variant="outlined">go to payment</Button>
+          <h3>
+            total price:{" "}
+            {cartProducts.reduce((acc, curItem) => {
+              return acc + curItem.amount * curItem.price;
+            }, 0)}
+            {"$"}
+          </h3>
+        </span>
       </header>
       <section className="cart-details">
         {cartProducts.map((item) => {

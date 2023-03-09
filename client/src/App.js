@@ -17,7 +17,7 @@ function App() {
 
       <Products />
       <footer>
-        <h6>@all rights reserved to esti</h6>
+        <h6>all rights reserved to esti</h6>
       </footer>
     </div>
   );
